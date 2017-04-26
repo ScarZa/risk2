@@ -41,7 +41,7 @@
     <script src="template/dist/js/demo.js"></script>
     <!-- page script -->
     <script>
-      $(function () {
+      //$(function () {
         $("#dbtable1").DataTable();
         $('#dbtable2').DataTable({
           "paging": true,
@@ -60,7 +60,7 @@
           "autoWidth": true
         });
         $(".select2").select2();
-      });
+      //});
     </script>
   </body>
 </html>
