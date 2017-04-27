@@ -77,9 +77,8 @@ if ($method == 'insert_risk') {
     $add_mngrisk = $connDB->insert($table2, $data2);
     if ($add_risk and $add_mngrisk == false) {
         echo "Insert not complete " . $add_risk->getMessage() . $add_mngrisk->getMessage();
-    } else { ?>
-    <script>alert('Insert complete!!!!');</script>
-        <?php echo " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style='color: red;'>Insert complete!!!!</b>";
+    } else { 
+        echo " &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style='color: red;'>Insert complete!!!!</b>";
     }
 } elseif ($_POST[method] == 'update') {
     $takerisk_id = $_POST[takerisk_id];

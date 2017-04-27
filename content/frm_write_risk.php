@@ -23,17 +23,14 @@ $connDB->conn_PDO();
     });
 </script>
 <script type="text/javascript" lang="javascript">
-$(function(){
-$("#btn_reset").click(function(){
-/* Single line Reset function executes on click of Reset Button */
-//$("#form1")[0].reset();
-$("#index_content").load("content/frm_write_risk.php");
-});});
+function loadFrm(content,page){
+$("#"+content+"").load(page);
+}
 </script>
 <script type="text/javascript" lang="javascript">
     function ClearForm(myForm) {
         var myForm = myForm;
-        document.getElementById(myForm).reset();
+        $("#"+myForm+"")[0].reset();
     }
 </script>
 <script type="text/javascript" lang="javascript">
@@ -66,7 +63,6 @@ $("#index_content").load("content/frm_write_risk.php");
             }
             if (subcate != '' && take_place != '' && res_dep != '' && take_detail != '' && level_risk != '') {
                 $("#WRsubmit").click(sendpost('process/prcwriterisk.php', 'result'));
-                //$("#form1")[0].reset();
             } 
         });
     });
@@ -341,8 +337,7 @@ for ($i = 0; $i < count($result); $i++) {
                             {
                                 if (document.getElementById("filUpload").value == "")
                                 {
-                                    //alert('Please select file...');
-                                    return false;
+                                return true;
                                 }
                                 document.getElementById("progress").style.visibility = "visible";
                                 document.getElementById("divresult").innerHTML = "Uploading....";

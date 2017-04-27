@@ -13,7 +13,7 @@ $connDB->conn_PDO();
 
 $method = isset($_POST['method'])?$_POST['method']:'';
 if($method=='insert_risk'){
-if (isset($_FILES["filUpload"])) {
+if (!empty($_FILES["filUpload"]["name"])) {
 $upload = new File_Upload("filUpload", "../myfile");
                 $take_file1 = $upload->upload();
                 $data = array($take_file1);
@@ -22,10 +22,12 @@ $upload = new File_Upload("filUpload", "../myfile");
                 $field=array("take_file1");
                 $execute=array(':user_id' => $_SESSION['rm_id']);
                 $edit_person=$connDB->update($table, $data, $where, $field, $execute);
-                echo "<script>alert('Upload file successfully!');</script>";
+                echo "<script>alert('Insert & Upload file complete!!!!');</script>";
                 echo "<script>window.top.window.showResult('1');</script>";
-            } else {
-                $take_file1 = '';
+                echo "<script>window.top.window.loadFrm('index_content','content/frm_write_risk.php');</script>";
+            } elseif (empty($_FILES["filUpload"]["name"])) {
+                echo "<script>alert('Insert complete!!!!');</script>";
+                echo "<script>window.top.window.loadFrm('index_content','content/frm_write_risk.php');</script>";
             }
 }elseif($method=='test'){
 if (isset($_FILES["filUpload"])) {
