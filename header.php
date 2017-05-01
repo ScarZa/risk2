@@ -13,14 +13,14 @@
         <link rel="stylesheet" href="template/plugins/font-awesome-4.6.3/css/font-awesome.min.css">
         <!-- jQuery 2.1.4 -->
     <script src="template/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-        <!--date picker-->
-        <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-1.12.3.js"></script>
+        <!--date picker
+        <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-1.12.3.js"></script>-->
         <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.js"></script>
         <link rel="stylesheet" href="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.css" />
         <link rel="stylesheet" href="template/plugins/jquery-ui-1.11.4.custom/SpecialDateSheet.css" />
         <script src="js/DatepickerThai.js" type="text/javascript"></script>
         <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link href="template/bootstrap/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
         <!-- Theme style -->
         <link rel="stylesheet" href="template/dist/css/AdminLTE.min.css">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -83,8 +83,8 @@
         </script>
         <script type="text/javascript">
             function getRefresh() {
-                $("#auto").show("slow");
-                $("#autoRefresh").load("count_comm.php", '', callback);
+                $("#autoRefresh").show("slow");
+                $("#autoRefresh").load("content/refresh_risk.php", '', callback);
             }
 
             function callback() {
@@ -117,7 +117,7 @@
                     alert('Cannot create XMLHTTP instance');
                     return false;
                 }
-                var url = 'count_comm.php';
+                var url = 'content/refresh_risk.php';
                 var pmeters = 'mySort=' + Sort;
                 HttPRequest.open('POST', url, true);
                 HttPRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
