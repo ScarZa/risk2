@@ -1,14 +1,18 @@
-var createTable = function (column, tid=null) {
+var createTable = function (column, tid=null ,responsive=true) {
     this.column = column;
     //this.data = data;
     this.tid = tid;
-    //this.content = content;
+    this.responsive = responsive;
 
     this.columnOBJ = JSON.parse(this.column);
     //this.dataOBJ = JSON.parse(this.data);
-    
+    if(this.responsive == true){
+        var resp = 'table-responsive';
+    }else{
+        var resp = '';
+    }
     this.GetHead = function () {
-        var head = "<div class='table-responsive'><table id='" + this.tid + "' class='table table-border table-hover' frame='below'>" +
+        var head = "<div class='"+resp+"'><table id='" + this.tid + "' class='table table-border table-hover' frame='below'>" +
                 "<thead bgcolor='#898888' style='text-align: center'><tr style='text-align: center'>" +
                 "<th  style='text-align: center;vertical-align: middle;' width='5%' rowspan='2'>ลำดับ</th>";
         for (var key in this.columnOBJ) {

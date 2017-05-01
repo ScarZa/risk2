@@ -1,3 +1,5 @@
+<!-- jQuery 2.1.4 -->
+    <script src="template/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!--date picker-->
 <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-1.12.3.js"></script>
 <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.js"></script>
@@ -15,4 +17,5 @@
 <!-- My script -->
 <script language="Javascript" type="text/javascript" src="js/sendGetPost.js"></script>
 <script src="js/createTable.js" type="text/javascript"></script>
-<script src="js/createCharts.js" type="text/javascript"></script>
+
+<script src="js/AJAXCharts.js" type="text/javascript"></script>

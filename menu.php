@@ -108,7 +108,8 @@
             <li class="header">เมนูหลัก</li>
             <li class="">
                 <?php if(isset($_SESSION['rm_id'])){?>
-                <a href="#" onclick="loadPage('#index_content','content/info_index2.php')">
+                <a href="index.php">
+                <!--<a href="#" onclick="loadPage('#index_content','content/info_index2.php')">-->
                 <?php }else{?>
                     <a href="index.php">    
                 <?php } ?>

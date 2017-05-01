@@ -11,6 +11,14 @@
         <link rel="stylesheet" href="template/bootstrap/css/bootstrap.min.css">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="template/plugins/font-awesome-4.6.3/css/font-awesome.min.css">
+        <!-- jQuery 2.1.4 -->
+    <script src="template/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+        <!--date picker-->
+        <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-1.12.3.js"></script>
+        <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.js"></script>
+        <link rel="stylesheet" href="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.css" />
+        <link rel="stylesheet" href="template/plugins/jquery-ui-1.11.4.custom/SpecialDateSheet.css" />
+        <script src="js/DatepickerThai.js" type="text/javascript"></script>
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
@@ -33,13 +41,7 @@
        <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="template/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
         <script src="template/plugins/excellentexport.js"></script>
-        <link rel="stylesheet" href="template/bootstrap/site.css">
-        <!--date picker-->
-        <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-1.12.3.js"></script>
-        <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.js"></script>
-        <link rel="stylesheet" href="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.css" />
-        <link rel="stylesheet" href="template/plugins/jquery-ui-1.11.4.custom/SpecialDateSheet.css" />
-        <script src="js/DatepickerThai.js" type="text/javascript"></script>
+        
 <!--HighChart-->
     <script src="template/plugins/Highcharts/code/highcharts.js"></script>
     <script src="template/plugins/Highcharts/code/modules/exporting.js"></script>
@@ -49,7 +51,8 @@
     
         <script language="Javascript" type="text/javascript" src="js/sendGetPost.js"></script>
         <script src="js/createTable.js" type="text/javascript"></script>
-        <script src="js/createCharts.js" type="text/javascript"></script>
+        
+        <script src="js/AJAXCharts.js" type="text/javascript"></script>
         <script src="template/plugins/json2/json2.js" type="text/javascript"></script><!-- JSON2 -->
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

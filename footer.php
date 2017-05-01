@@ -8,8 +8,7 @@
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
-    <!-- jQuery 2.1.4 -->
-    <script src="template/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    
     <!-- Bootstrap 3.3.5 -->
     <script src="template/bootstrap/js/bootstrap.min.js"></script>
     <!-- Morris.js charts -->
