@@ -15,7 +15,7 @@ $result = $conn_DB->select_a();
 ?>
                 <a href="JavaScript:doCallAjax('countrisk');" class="dropdown-toggle" data-toggle="dropdown">
                     <i style="color: yellow;" class="fa fa-bell-o"></i>
-                  <span class="label label-danger" id="autoRefresh"><?=$result['countrisk']?></span>
+                  <span class="label label-danger"><?=$result['countrisk']?></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="header" style="color: red;"><b>คุณมี <?=$result['countrisk']?> รายการแจ้งย้าย</b></li>
@@ -53,13 +53,13 @@ $result = $conn_DB->select_a();
                                     }
 ?>
                       <li>
-                        <a href="#">
+                        <a href="JavaScript:doCallAjax('name');">
                       <i class="<?=$icon?> text-<?= $color?>"></i>  <?= $result2[$i]['name']?> 
                         </a>
                       </li>
                                 <?php } ?>
                    </ul>
                   </li>
-                  <li class="footer"><a href="#">ดูทั้งหมด</a></li>
+                  <li class="footer"><a href="index.php?page=content/check_risk">ดูทั้งหมด</a></li>
                 </ul>
 <?php $conn_DB->close_PDO(); ?>

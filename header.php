@@ -81,19 +81,6 @@
                 }
             }
         </script>
-        <script type="text/javascript">
-            function getRefresh() {
-                $("#autoRefresh").show("slow");
-                $("#autoRefresh").load("content/refresh_risk.php", '', callback);
-            }
-
-            function callback() {
-                $("#autoRefresh").fadeIn("slow");
-                setTimeout("getRefresh();", 1000);
-            }
-
-            $(document).ready(getRefresh);
-        </script>
         <script language="JavaScript">
             var HttPRequest = false;
             function doCallAjax(Sort) {

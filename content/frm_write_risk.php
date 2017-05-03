@@ -1,4 +1,4 @@
-<?php
+<?php include_once '../head.php';
 function __autoload($class_name) {
     include '../class/' . $class_name . '.php';
 }
@@ -7,7 +7,7 @@ set_time_limit(0);
 $connDB = new TablePDO();
 $read = "../connection/conn_DB.txt";
 $connDB->para_read($read);
-$conn_db = $connDB->Read_Text();
+$conndb = $connDB->Read_Text();
 $connDB->conn_PDO();
 ?>
 <script type="text/javascript" lang="javascript">
@@ -69,7 +69,7 @@ $("#"+content+"").load(page);
 <div class="col-lg-12">
     <h2 style="color: blue">  ระบุรายละเอียดความเสี่ยง </h2> 
     <ol class="breadcrumb">
-        <li><a href="#" onclick="loadPage('#index_content', 'content/info_index2.php')"><i class="fa fa-home"></i> หน้าหลัก</a></li>
+        <li><a href="index.php"><i class="fa fa-home"></i> หน้าหลัก</a></li>
         <li class="active"><i class="fa fa-edit"></i> เขียนความเสี่ยง</li>
     </ol>
     <div class="alert alert-info alert-dismissable">

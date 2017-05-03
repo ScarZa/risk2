@@ -47,11 +47,11 @@
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
                         <?php
-                                        $sql = "select s1.category,t1.level_risk,s1.name  as sub_name , t1.takerisk_id , t1.take_file1 , t1.take_rec_date,LEFT(t1.take_detail,30)  AS detail  from mngrisk m1 
+                                        $sql = "select s1.category,t1.level_risk,s1.name  as sub_name , t1.takerisk_id , t1.take_file1 , t1.take_rec_date,LEFT(t1.take_detail,35)  AS detail  from mngrisk m1 
                 LEFT OUTER JOIN takerisk t1 ON t1.takerisk_id = m1.takerisk_id 
                 LEFT OUTER JOIN subcategory s1 ON t1.subcategory = s1.subcategory 
                 WHERE t1.res_dep = :user_dep and t1.move_status='N' and m1.mng_status='N' 
-                ORDER BY m1.mngrisk_id DESC";
+                ORDER BY t1.level_risk DESC";
                                         $execute=array(':user_dep' => $user_dep);
                                         $conn_DB->imp_sql($sql);
                                         $result2=$conn_DB->select($execute);
@@ -87,9 +87,9 @@
                         </div><?php }?>
                           <h4>
                             <i class="<?=$icon?> text-<?= $color?>"></i> <?= $result2[$i]['sub_name']?>:
-                            <small><i class="fa fa-clock-o"> <?=DateThai1($result2[$i]['take_rec_date'])?></i></small>
                           </h4>
                           <p><?= $result2[$i]['detail']?>...</p>
+                          <small><i class="fa fa-clock-o"> <?=DateThai1($result2[$i]['take_rec_date'])?></i></small>
                         </a>
                       </li><!-- end message --><?php }?>
                     </ul>
@@ -197,8 +197,8 @@
             <li class="header">เมนูหลัก</li>
             <li class="">
                 <?php if(isset($_SESSION['rm_id'])){?>
-                <a href="index.php">
-                <!--<a href="#" onclick="loadPage('#index_content','content/info_index2.php')">-->
+                <!--<a href="index.php">-->
+                <a href="#" onclick="loadPage('#index_content','content/info_index.php')">
                 <?php }else{?>
                     <a href="index.php">    
                 <?php } ?>
@@ -206,7 +206,7 @@
             </li>
             
             <?php if(isset($_SESSION['rm_id'])){ ?>
-            <li class=""><a href="#" onclick="loadPage('#index_content','content/frm_write_risk.php')">
+            <li class=""><a href="index.php?page=content/frm_write_risk">
                     <img src="images/icon_set2/compose.ico" width="20"> <span>เขียนความเสี่ยง</span></a>
             </li>
             <li class=""><a href="#" onclick="loadPage('#index_content','content/test_index.php')">
@@ -215,36 +215,28 @@
             <li class=""><a href="#" onclick="loadPage('#index_content','content/test.php')">
                     <img src="images/icon_set2/folder.ico" width="20"> <span>ประวัติการรายงานความเสี่ยง</span></a>
             </li>
-            <li class=""><a href="#" onclick="sendget('test_index.php','index_content')">
-                    <img src="images/icon_set2/eye.ico" width="20"> <span>ติดตาม/ประเมินผลความเสี่ยง</span></a>
-            </li>
-            <li class=""><a href="#" onclick="sendget('test_index.php','index_content')">
-                    <img src="images/Transfer.ico" width="20"> <span>รายการแจ้งย้ายความเสี่ยง</span></a>
-            </li>
-            <li class=""><a href="#" onclick="sendget('test_index.php','index_content')">
-                    <img src="images/bin1.png" width="20"> <span>รายการความเสี่ยงในถังขยะ</span></a>
-            </li>           
+                       
             <li class="treeview">
               <a href="#">
-                  <img src="images/icon_set2/piechart.ico" width="20">
-                <span>รายงานคณะกรรมการ</span>
+                  <img src="images/menu_items_options.ico" width="20">
+                <span>เมนูคณะกรรมการ</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+                  <li class=""> <a href="index.php?page=content/check_risk">
+                    &nbsp;&nbsp;<img src="images/Transfer.ico" width="20"> <span>รายการแจ้งย้ายความเสี่ยง</span></a>
+            </li>
+                  <li class=""> <a href="#" onclick="loadPage('#index_content''content/test_index.php')">
+                    &nbsp;&nbsp;<img src="images/icon_set2/eye.ico" width="20"> <span>ติดตาม/ประเมินผล</span></a>
+            </li>
+            <li class=""> <a href="#" onclick="sendget('test_index.php','index_content')">
+                    &nbsp;&nbsp;<img src="images/bin1.png" width="20"> <span>รายการความเสี่ยงในถังขยะ</span></a>
+            </li>
                   <li>
-                  <a href="#"><i class="fa fa-circle-o text-blue"></i> รายงานของคณะกรรมการ <i class="fa fa-angle-left pull-right"></i></a>
+                  <a href="#">&nbsp;&nbsp;<img src="images/icon_set2/piechart.ico" width="20"> รายงานคณะกรรมการ <i class="fa fa-angle-left pull-right"></i></a>
                   <ul class="treeview-menu">
                     <li><a href="#" onClick="window.open('content/pre_data_billimp.php?method=upd','','width=600,height=700'); return false;" title="Update ข้อมูล BILLDISP จาก HOS"><i class="fa fa-circle-o text-aqua"></i> ข้อมูล BILLDISP ที่นำเข้าแล้ว </a></li>
                     <li><a href="#" onClick="window.open('content/pre_data_billtran.php?method=upd','','width=600,height=700'); return false;" title="Update ข้อมูล BILLTRAN จาก HOS"><i class="fa fa-circle-o text-aqua"></i> ข้อมูล BILLTRAN ที่นำเข้าแล้ว </a></li>
-                    </ul>
-            </li>
-                <li><a href="#" onClick="window.open('content/select_date_billimp.php?method=imp','','width=400,height=250'); return false;" title="นำเข้าข้อมูล BILLDISP จาก HOS"><i class="fa fa-circle-o text-green"></i> นำเข้า BILLDISP</a></li>
-                <li><a href="#" onClick="window.open('content/select_date_billtran.php?method=imp','','width=400,height=250'); return false;" title="นำเข้าข้อมูล BILLTRAN จาก HOS"><i class="fa fa-circle-o text-green"></i> นำเข้า BILLTRAN</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o text-blue"></i> รายงานของหน่วยงาน <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="#" onClick="window.open('content/select_date_billimp.php?method=upd','','width=400,height=250'); return false;" title="Update ข้อมูล BILLDISP จาก HOS"><i class="fa fa-circle-o text-aqua"></i> update BILLDISP</a></li>
-                    <li><a href="#" onClick="window.open('content/select_date_billtran.php?method=upd','','width=400,height=250'); return false;" title="Update ข้อมูล BILLTRAN จาก HOS"><i class="fa fa-circle-o text-aqua"></i> update BILLTRAN</a></li>
                     </ul>
             </li>
               </ul>

@@ -15,11 +15,12 @@ include_once 'menu.php';
         }
     </script>
 <section class="content">
-    <div id="index_content"></div>    
-<?php if (isset($_SESSION['rm_id'])) { ?>
-    </section>
+    <div id="index_content"></div>   
+        
+<?php if (isset($_SESSION['rm_id'])) { 
+        isset($_GET['page'])?$page=$_GET['page'].'.php':$page='content/info_index.php';?>
    <script lang="Javascript" type="text/javascript">
-        $("#index_content").load("content/info_index.php");
+        $("#index_content").load("<?= $page?>");
         </script>
     <?php } else {
     if ($db == false) {
@@ -32,7 +33,9 @@ include_once 'menu.php';
         </center> 
     <?php } ?>
     NO LOGIN.
-<?php } 
+<?php } ?>
+    </section>
+    <?php
 include_once 'menu_footer.php';
 include_once 'footer.php';
 ?>

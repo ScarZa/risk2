@@ -44,6 +44,19 @@
 	<input type="file" name="filUpload" id="filUpload">
 	<input type="submit" name="submit" value="submit">
     </form>
+    <script language="Javascript" type="text/javascript">
+    var column1 = '{"เลขที่":[],"รายการ":[],"เกิดขึ้นเมื่อ":[],"ได้รับเมื่อ":[]}';
+    var tid = 'dbtable1';
+    var tid3 = 'dbtable3';
+    var tid2 = 'dbtable2';
+              var CTb = new createTable(column1);
+              CTb.GetTableAjax('JsonData/DT_CR.php','contentTB');
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div id="contentTB"></div>
+    </div>
+</div>
 </body>
 </html>
 
