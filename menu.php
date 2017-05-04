@@ -1,4 +1,4 @@
-  <body Onload="bodyOnload();" class="hold-transition skin-blue-light fixed sidebar-mini">
+  <body class="hold-transition skin-blue-light fixed sidebar-mini" Onload="bodyOnload();">
        <img src="images/black_ribbon_bottom_right.png" class="black-ribbon stick-bottom stick-right"/>
     <div class="wrapper">
 
@@ -169,11 +169,12 @@
                   </li>
                 </ul>
               </li>
+              <?php if($_SESSION['rm_status']=='Y') {?>
               <!-- Control Sidebar Toggle Button -->
               <li>
                 <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
               </li>
-                <?php }?>
+              <?php }}?>
             </ul>
           </div>
         </nav>
@@ -205,18 +206,9 @@
                     <img src="images/gohome.ico" width="20"> <span>หน้าหลัก</span></a>
             </li>
             
-            <?php if(isset($_SESSION['rm_id'])){ ?>
-            <li class=""><a href="index.php?page=content/frm_write_risk">
-                    <img src="images/icon_set2/compose.ico" width="20"> <span>เขียนความเสี่ยง</span></a>
-            </li>
-            <li class=""><a href="#" onclick="loadPage('#index_content','content/test_index.php')">
-                    <img src="images/icon_set2/clipboard.ico" width="20"> <span>ความเสี่ยงที่ได้รับ</span></a>
-            </li>
-            <li class=""><a href="#" onclick="loadPage('#index_content','content/test.php')">
-                    <img src="images/icon_set2/folder.ico" width="20"> <span>ประวัติการรายงานความเสี่ยง</span></a>
-            </li>
-                       
-            <li class="treeview">
+            <?php if(isset($_SESSION['rm_id'])){ 
+                if($_SESSION['rm_status']=='Y'){?>
+                        <li class="treeview">
               <a href="#">
                   <img src="images/menu_items_options.ico" width="20">
                 <span>เมนูคณะกรรมการ</span>
@@ -240,6 +232,23 @@
                     </ul>
             </li>
               </ul>
+            </li>
+                       <li class="treeview">
+              <a href="#">
+                  <img src="images/menu_items_options.ico" width="20">
+                <span>เมนูผู้ใช้ทั่วไป</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <?php } ?>
+            <li class=""><a href="index.php?page=content/frm_write_risk">
+                    <img src="images/icon_set2/compose.ico" width="20"> <span>เขียนความเสี่ยง</span></a>
+            </li>
+            <li class=""><a href="#" onclick="loadPage('#index_content','content/test_index.php')">
+                    <img src="images/icon_set2/clipboard.ico" width="20"> <span>ความเสี่ยงที่ได้รับ</span></a>
+            </li>
+            <li class=""><a href="#" onclick="loadPage('#index_content','content/test.php')">
+                    <img src="images/icon_set2/folder.ico" width="20"> <span>ประวัติการรายงานความเสี่ยง</span></a>
             </li>
             <li class="treeview">
               <a href="#">
@@ -272,6 +281,8 @@
               </ul>
             </li>
             <?php if(($_SESSION['rm_status'])=='Y'){ ?>
+            </ul>
+            </li>
             <li class=""><a href="#" onclick="window.open('form-format/manual_risk(admin).pdf','','width=750,height=1000'); return false;">
                     <img src="images/icon_set2/booklet.ico" width="20"> <span>คู่มือโปรแกรมความเสี่ยง</span></a>
             </li>

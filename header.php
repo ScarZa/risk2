@@ -12,14 +12,8 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="template/plugins/font-awesome-4.6.3/css/font-awesome.min.css">
         <!-- jQuery 2.1.4 -->
-    <script src="template/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-        <!--date picker
-        <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-1.12.3.js"></script>-->
-        <script src="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.js"></script>
-        <link rel="stylesheet" href="template/plugins/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom.css" />
-        <link rel="stylesheet" href="template/plugins/jquery-ui-1.11.4.custom/SpecialDateSheet.css" />
-        <script src="js/DatepickerThai.js" type="text/javascript"></script>
-        <!-- Ionicons -->
+        <script src="template/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+         <!-- Ionicons -->
         <link href="template/bootstrap/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
         <!-- Theme style -->
         <link rel="stylesheet" href="template/dist/css/AdminLTE.min.css">
@@ -32,8 +26,6 @@
         <link rel="stylesheet" href="template/plugins/iCheck/all.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="template/plugins/datatables/dataTables.bootstrap.css">
-        <!-- Morris chart -->
-        <link rel="stylesheet" href="template/plugins/morris/morris.css">
         <!-- jvectormap -->
         <link rel="stylesheet" href="template/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
         <!-- Select2 -->
@@ -80,6 +72,19 @@
                     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
                 }
             }
+        </script>
+        <script type="text/javascript">
+            function getRefresh() {
+                $("#autoRefresh").show("slow");
+                $("#autoRefresh").load("content/refresh_risk.php", '', callback);
+            }
+
+            function callback() {
+                $("#autoRefresh").fadeIn("slow");
+                setTimeout("getRefresh();", 1000);
+            }
+
+            $(document).ready(getRefresh);
         </script>
         <script language="JavaScript">
             var HttPRequest = false;
