@@ -1,6 +1,6 @@
-var createTable = function (column, tid=null ,responsive=true) {
+var createTable = function (column,level_col='1', tid=null,responsive=true) {
     this.column = column;
-    //this.data = data;
+    this.level_col = level_col;
     this.tid = tid;
     this.responsive = responsive;
 
@@ -13,8 +13,10 @@ var createTable = function (column, tid=null ,responsive=true) {
     }
     this.GetHead = function () {
         var head = "<div class='"+resp+"'><table id='" + this.tid + "' class='table table-border table-hover' frame='below'>" +
-                "<thead bgcolor='#898888' style='text-align: center'><tr style='text-align: center'>" +
-                "<th  style='text-align: center;vertical-align: middle;' width='5%' rowspan='2'>ลำดับ</th>";
+                "<thead bgcolor='#898888' style='text-align: center'>";
+                
+        if(this.level_col=='2'){
+            head += "<tr style='text-align: center'><th  style='text-align: center;vertical-align: middle;' width='5%' rowspan='2'>ลำดับ</th>";
         for (var key in this.columnOBJ) {
             colspan = this.columnOBJ[key].length;
 
@@ -32,6 +34,16 @@ var createTable = function (column, tid=null ,responsive=true) {
                 head += "<th style='text-align: center'>" + value[keys] + "</th>";
             }
         }
+    }else if(this.level_col=='1'){
+        head += "<tr style='text-align: center'><th  style='text-align: center;vertical-align: middle;' width='5%'>ลำดับ</th>";
+        for (var key in this.columnOBJ) {
+            var value = this.columnOBJ[key];
+            //for (var keys in value) {
+
+                head += "<th style='text-align: center'>" + value + "</th>";
+            //}
+        }
+    }
         head += "</tr></thead>";
     return head;
     }
@@ -60,22 +72,29 @@ var createTable = function (column, tid=null ,responsive=true) {
     });
     }
 
-    this.GetTableAjax = function (locate, content) {
+    this.GetTableAjax = function (locate, content,detail=false ) {
         this.locate = locate;
 
         var table = this.GetHead();
         table += "<tbody>";
         var order = 1;
+        var count_col=this.columnOBJ.length;
         $.getJSON(this.locate, function (dataTB) {
             if (dataTB != null && dataTB.length > 0) {
                 for (var i = 0; i < dataTB.length; i++) {
                     table += "<tr class=''>";
                     table += "<td align='center'>" + order + "</td>";
+                    var c =0;
                     $.each( dataTB[i], function( dkey, val ) {
-                    //for (var dkey in dataTB[i]) {
-                       // if (dataTB[i].hasOwnProperty(dkey))
+                        if(detail !=false){
+                            if(c< (count_col)-1){
                             table += "<td align='center'>" + val + "</td>";
-                    //}
+                         }else if(c == (count_col)-1){
+                            table += "<td align='center'><a href='"+detail+val+"'><img src='images/icon_set1/file.ico' width='25'></a></td>";
+                        }
+                        }else{
+                            table += "<td align='center'>" + val + "</td>";
+                        }c++;
                 });
                     table += "</tr>";
                     order++;

@@ -11,12 +11,13 @@ set_time_limit(0);
             </ol>
              
 <script language="Javascript" type="text/javascript">
-    var column1 = '{"รายการความเสี่ยงที่รอ RM man มาตรวจสอบ":["เลขที่","รายการ","เกิดขึ้นเมื่อ","ได้รับเมื่อ"]}';
+    //var column1 = '{"รายการความเสี่ยงที่รอ RM man มาตรวจสอบ":["เลขที่","รายการ","เกิดขึ้นเมื่อ","ได้รับเมื่อ"]}';
+    var column1 = '["เลขที่","รายการ","เกิดขึ้นเมื่อ","ได้รับเมื่อ","ตรวจสอบ"]';
     var tid = 'dbtable1';
     var tid3 = 'dbtable3';
     var tid2 = 'dbtable2';
-              var CTb = new createTable(column1,tid);
-              CTb.GetTableAjax('JsonData/DT_CR.php','contentTB');
+              var CTb = new createTable(column1,'1',tid);
+              CTb.GetTableAjax('JsonData/DT_CR.php','contentTB','index.php?page=content/detail_risk&data=');
 </script>
 <div class="row">
     <div class="col-md-12">

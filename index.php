@@ -2,6 +2,7 @@
 include_once 'up_header.php';
 include_once 'header.php';
 include_once 'menu.php';
+$conn_DB = new EnDeCode();
 ?>
  <script lang="Javascript" type="text/javascript">
          function loadPage(show,page){
@@ -18,9 +19,17 @@ include_once 'menu.php';
     <div id="index_content"></div>   
         
 <?php if (isset($_SESSION['rm_id'])) { 
-        isset($_GET['page'])?$page=$_GET['page'].'.php':$page='content/info_index.php';?>
+    if(!empty($_GET['page'])){
+        $page= $_GET['page'].'.php';
+        $data = isset($_GET['data'])?$conn_DB->sslDec($_GET['data']):'';
+    }else{
+    $page='content/info_index.php';$data='';} ?>
+    
    <script lang="Javascript" type="text/javascript">
-        $("#index_content").load("<?= $page?>");
+        $("#index_content").load("<?= $page?>",{data:'<?=$data?>'}, function(responseTxt, statusTxt, xhr){               
+        if(statusTxt == "error")
+            alert("Error: " + xhr.status + ": " + xhr.statusText);
+    });
         </script>
     <?php } else {
     if ($db == false) {

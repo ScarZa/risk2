@@ -7,7 +7,7 @@
       </footer>
 
       <!-- Control Sidebar -->
-      <?php if($_SESSION['rm_status']=='Y') {?>
+      <?php if(isset($_SESSION['rm_status'])?$_SESSION['rm_status']:''=='Y') {?>
       <aside class="control-sidebar control-sidebar-dark">
         <!-- Create the tabs -->
         <ul class="nav nav-tabs nav-justified control-sidebar-tabs">

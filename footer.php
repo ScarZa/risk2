@@ -5,9 +5,9 @@
     <script src="template/plugins/select2/select2.full.min.js"></script>
     <script src="template/plugins/moment.min.js"></script>
     
-    <script>
+    <!--<script>
       $.widget.bridge('uibutton', $.ui.button);
-    </script>
+    </script>-->
     
     <!-- Bootstrap 3.3.5 -->
     <script src="template/bootstrap/js/bootstrap.min.js"></script>
@@ -29,8 +29,8 @@
     <script src="template/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="template/dist/js/app.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="template/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) 
+    <script src="template/dist/js/pages/dashboard.js"></script>-->
     <!-- AdminLTE for demo purposes -->
     <script src="template/dist/js/demo.js"></script>
     <!-- page script -->

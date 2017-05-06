@@ -7,7 +7,7 @@ function __autoload($class_name) {
 }
 //include 'class/TablePDO.php';
 set_time_limit(0);
-$conn_DB= new TablePDO();
+$conn_DB= new EnDeCode();
 $read="connection/conn_DB.txt";
 $conn_DB->para_read($read);
 $conn_db=$conn_DB->Read_Text();

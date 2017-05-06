@@ -240,19 +240,19 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <?php } ?>
+                <?php } if($_SESSION['rm_status'] == 'Y'){ $tab = "&nbsp;&nbsp;";}else{ $tab='';} ?>
             <li class=""><a href="index.php?page=content/frm_write_risk">
-                    <img src="images/icon_set2/compose.ico" width="20"> <span>เขียนความเสี่ยง</span></a>
+                    <?=$tab?><img src="images/icon_set2/compose.ico" width="20"> <span>เขียนความเสี่ยง</span></a>
             </li>
             <li class=""><a href="#" onclick="loadPage('#index_content','content/test_index.php')">
-                    <img src="images/icon_set2/clipboard.ico" width="20"> <span>ความเสี่ยงที่ได้รับ</span></a>
+                    <?=$tab?><img src="images/icon_set2/clipboard.ico" width="20"> <span>ความเสี่ยงที่ได้รับ</span></a>
             </li>
             <li class=""><a href="#" onclick="loadPage('#index_content','content/test.php')">
-                    <img src="images/icon_set2/folder.ico" width="20"> <span>ประวัติการรายงานความเสี่ยง</span></a>
+                    <?=$tab?><img src="images/icon_set2/folder.ico" width="20"> <span>ประวัติการรายงานความเสี่ยง</span></a>
             </li>
             <li class="treeview">
               <a href="#">
-                  <img src="images/icon_set2/piechart.ico" width="20">
+                    <?=$tab?><img src="images/icon_set2/piechart.ico" width="20">
                 <span>รายงานหน่วยงาน</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>

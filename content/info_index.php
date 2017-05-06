@@ -214,8 +214,8 @@ if (empty($_GET['year'])) {
 </script>
 
 <script language="Javascript" type="text/javascript">
-    var column1 = '{"เดือน":[],"จำนวนเรื่อง":[]}';
-    var column2 = '{"ชื่อ-นามสกุล":[],"จำนวนเรื่อง":[]}';
+    var column1 = '["เดือน","จำนวนเรื่อง"]';
+    var column2 = '["ชื่อ-นามสกุล","จำนวนเรื่อง"]';
     var tid = 'dbtable1';
     var tid3 = 'dbtable3';
     var tid2 = 'dbtable2';

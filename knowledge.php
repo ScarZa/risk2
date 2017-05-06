@@ -6,13 +6,18 @@
               <li><a href="index.php"><i class="fa fa-home"></i> หน้าหลัก</a></li>
               <li class="active"><i class="fa fa-file"></i> ความรู้เกี่ยวกับความเสี่ยง</li>
             </ol>
-            <div class="alert alert-info alert-dismissable">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              ความรู้เกี่ยวกับความเสี่ยง <a class="alert-link" target="_blank" href="#">  เพื่อเสริมสร้างความรู้ความเข้าใจในระบบบริหารความเสี่ยง</a> 
-            </div>
           </div>
         </div><!-- /.row -->
-        
+        <div class="row">
+    <div class="col-md-12">
+            <div class="box box-primary box-solid">
+                <div class="box-header with-border">
+                    <h4 class="box-title"><i class="fa fa-star"></i> ความรู้เกี่ยวกับความเสี่ยง เพื่อเสริมสร้างความรู้ความเข้าใจในระบบบริหารความเสี่ยง </h4>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
         <div class="row">
           <div class="col-lg-12">
             <h2 id="nav-tabs"></h2>
@@ -165,8 +170,8 @@
               </div>
             </div>
           </div>
-   
-
+   </div>
+</div></div>
           </div>
         </div><!-- /.row -->
 

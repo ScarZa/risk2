@@ -21,7 +21,7 @@ $result = $conn_DB->select_a();
                     <li class="header" style="color: red;"><b>คุณมี <?=$result['countrisk']?> รายการแจ้งย้าย</b></li>
                   <li>
                     <!-- inner menu: contains the actual data -->
-                    <ul class="menu"><?php  $sql2 = "select s1.category,t1.level_risk, s1.name from takerisk t1 
+                    <ul class="menu"><?php  $sql2 = "select t1.takerisk_id, s1.category,t1.level_risk, s1.name from takerisk t1 
                     inner join subcategory s1 on t1.subcategory=s1.subcategory
                     WHERE t1.move_status='Y' and t1.recycle='N' order by t1.level_risk DESC";
                                 $conn_DB->imp_sql($sql2);
@@ -53,7 +53,7 @@ $result = $conn_DB->select_a();
                                     }
 ?>
                       <li>
-                        <a href="JavaScript:doCallAjax('name');">
+                          <a href="index.php?page=content/detail_risk&data=<?= $conn_DB->sslEnc($result2[$i]['takerisk_id'])?>">
                       <i class="<?=$icon?> text-<?= $color?>"></i>  <?= $result2[$i]['name']?> 
                         </a>
                       </li>

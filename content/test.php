@@ -1,79 +1,113 @@
 <html>
-<head>
-<title>ThaiCreate.Com Tutorials</title>
-</head>
-<body>
-    <form action="process/prcupload_file.php" name="form1" method="post" enctype="multipart/form-data" target="iframe_target" onSubmit="return ChkSubmit();">
-	<iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
-	<script language="JavaScript">
+  <head>
+     <title>base64 Encoding/Decoding</title>
+  </head>
 
-		function ChkSubmit(result)
-		{
-			if(document.getElementById("filUpload").value == "")
-			{
-				alert('Please select file...');
-				return false;
-			}
-			
-			document.getElementById("progress").style.visibility="visible"; 
-			document.getElementById("divresult").innerHTML ="Uploading....";
-			return true;
-		}
+  <script type="text/javascript">
+  <!--
 
-		function showResult(result)
-		{
-			document.getElementById("progress").style.visibility="hidden"; 
-			if(result==1)
-			{
-				document.getElementById("divresult").innerHTML = "<font color=green> Save successfully! </font>  <br>";
-			}
-			else
-			{
-				document.getElementById("divresult").innerHTML = "<font color=red> Error!! Cannot upload data </font> <br>";
-			}
-		}
-	</script>
-	<div id="divresult"></div>
-	<div id="progress" style="visibility:hidden"><img src="images/progress.gif"></div>
-        <input type="hidden" name="method" value="test">
-	<input type="file" name="filUpload" id="filUpload">
-	  <input type="submit" name="submit" value="submit">
-	  </form>
-    <form action="process/prcupload_file.php" name="form2" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="method" value="test">
-	<input type="file" name="filUpload" id="filUpload">
-	<input type="submit" name="submit" value="submit">
-    </form>
-    <script language="Javascript" type="text/javascript">
-    var column1 = '{"เลขที่":[],"รายการ":[],"เกิดขึ้นเมื่อ":[],"ได้รับเมื่อ":[]}';
-    var tid = 'dbtable1';
-    var tid3 = 'dbtable3';
-    var tid2 = 'dbtable2';
-              var CTb = new createTable(column1);
-              CTb.GetTableAjax('JsonData/DT_CR.php','contentTB');
-</script>
-<div class="row">
-    <div class="col-md-12">
-        <div id="contentTB"></div>
-    </div>
-</div>
-</body>
+  var keyStr = "ABCDEFGHIJKLMNOP" +
+               "QRSTUVWXYZabcdef" +
+               "ghijklmnopqrstuv" +
+               "wxyz0123456789+/" +
+               "=";
+
+  function encode64(input) {
+     input = escape(input);
+     var output = "";
+     var chr1, chr2, chr3 = "";
+     var enc1, enc2, enc3, enc4 = "";
+     var i = 0;
+
+     do {
+        chr1 = input.charCodeAt(i++);
+        chr2 = input.charCodeAt(i++);
+        chr3 = input.charCodeAt(i++);
+
+        enc1 = chr1 >> 2;
+        enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+        enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+        enc4 = chr3 & 63;
+
+        if (isNaN(chr2)) {
+           enc3 = enc4 = 64;
+        } else if (isNaN(chr3)) {
+           enc4 = 64;
+        }
+
+        output = output +
+           keyStr.charAt(enc1) +
+           keyStr.charAt(enc2) +
+           keyStr.charAt(enc3) +
+           keyStr.charAt(enc4);
+        chr1 = chr2 = chr3 = "";
+        enc1 = enc2 = enc3 = enc4 = "";
+     } while (i < input.length);
+
+     return output;
+  }
+
+  function decode64(input) {
+     var output = "";
+     var chr1, chr2, chr3 = "";
+     var enc1, enc2, enc3, enc4 = "";
+     var i = 0;
+
+     // remove all characters that are not A-Z, a-z, 0-9, +, /, or =
+     var base64test = /[^A-Za-z0-9\+\/\=]/g;
+     if (base64test.exec(input)) {
+        alert("There were invalid base64 characters in the input text.\n" +
+              "Valid base64 characters are A-Z, a-z, 0-9, '+', '/',and '='\n" +
+              "Expect errors in decoding.");
+     }
+     input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+     do {
+        enc1 = keyStr.indexOf(input.charAt(i++));
+        enc2 = keyStr.indexOf(input.charAt(i++));
+        enc3 = keyStr.indexOf(input.charAt(i++));
+        enc4 = keyStr.indexOf(input.charAt(i++));
+
+        chr1 = (enc1 << 2) | (enc2 >> 4);
+        chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+        chr3 = ((enc3 & 3) << 6) | enc4;
+
+        output = output + String.fromCharCode(chr1);
+
+        if (enc3 != 64) {
+           output = output + String.fromCharCode(chr2);
+        }
+        if (enc4 != 64) {
+           output = output + String.fromCharCode(chr3);
+        }
+
+        chr1 = chr2 = chr3 = "";
+        enc1 = enc2 = enc3 = enc4 = "";
+
+     } while (i < input.length);
+
+     return unescape(output);
+  }
+
+  //--></script>
+
+  <body>
+
+     <form name="base64Form">
+
+        Type in the message you want to encode in base64, or paste<br>
+        base64 encoded text into the text field, select Encode or Decode, <br>
+        and click the button!<br>
+
+        <textarea name="theText" cols="40" rows="6"></textarea><br>
+
+        <input type="button" name="encode" value="Encode to base64"
+           onClick="document.base64Form.theText.value=encode64(document.base64Form.theText.value);">
+
+        <input type="button" name="decode" value="Decode from base64"
+           onClick="document.base64Form.theText.value=decode64(document.base64Form.theText.value);">
+
+     </form>
+
+  </body>
 </html>
-
-
-<?php
-sleep(3);
-if(isset($_FILES["filUpload"])){
-
-if(move_uploaded_file($_FILES["filUpload"]["tmp_name"],"myfile/".$_FILES["filUpload"]["name"]))
-{
-	echo "<script>alert('Upload file successfully!');</script>";
-	echo "<script>window.top.window.showResult('1');</script>";
-}
-else
-{
-	echo "<script>alert('Error! Cannot upload data');</script>";
-	echo "<script>window.top.window.showResult('2');</script>";
-}
-}
-?>

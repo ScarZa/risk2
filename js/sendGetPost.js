@@ -5,9 +5,9 @@ function Inint_AJAX() {
    alert("XMLHttpRequest not supported")
    return null
 }
-function sendget(page,content,value) {
+function sendget(page,content,value,name='value') {
      var req = Inint_AJAX(); //สร้าง Object
-     req.open('GET', page+'?value='+value, true); //กำหนด สถานะการทำงานของ AJAX แบบ GET และส่งข้อมูลผ่านทาง URL
+     req.open('GET', page+'?'+name+'='+value, true); //กำหนด สถานะการทำงานของ AJAX แบบ GET และส่งข้อมูลผ่านทาง URL
      req.onreadystatechange = function() { //เหตุการณ์เมื่อมีการตอบกลับ
           if (req.readyState==4) {
                if (req.status==200) { //ได้รับการตอบกลับเรียบร้อย
